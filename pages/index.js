@@ -26,7 +26,8 @@ export default function Home() {
 
       <section className="hero">
         <div className="hero-text">
-          <h1>Transforming Ration Delivery</h1>
+          <h1>Welcome to Smart Ration Portal 🚀 Updated!</h1>
+
           <p>
             Empowering citizens with smart access to their ration entitlements. Real-time access,
             reliable tracking, and a secure future—at your fingertips.
