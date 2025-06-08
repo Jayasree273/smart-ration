@@ -194,18 +194,19 @@ header {
 .features-section {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: space-evenly;
+
   gap: 2rem;
-  background-color: #154734; /* Your dark green background */
+  background-color: #154734; 
   color: white;
   padding: 3rem 1rem;
   text-align: center;
 }
 
 .feature-card {
-  flex: 1 1 220px; /* Flexible width, min 220px */
+  flex: 1 1 220px; 
   max-width: 250px;
-  background-color: #1c5c45; /* Slightly lighter green box (optional) */
+  background-color: #1c5c45; 
   border-radius: 12px;
   padding: 1.5rem;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
