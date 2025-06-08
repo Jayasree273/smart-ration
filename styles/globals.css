@@ -192,20 +192,29 @@ header {
 }
 
 .features-section {
-  background-color: #264d2d;
-  color: white;
-  padding: 60px 40px;
   display: flex;
-  justify-content: space-around;
   flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  background-color: #154734; /* Your dark green background */
+  color: white;
+  padding: 3rem 1rem;
   text-align: center;
-  gap: 40px;
 }
 
 .feature-card {
-  flex: 1;
-  min-width: 240px;
-  margin: 20px;
+  flex: 1 1 220px; /* Flexible width, min 220px */
+  max-width: 250px;
+  background-color: #1c5c45; /* Slightly lighter green box (optional) */
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 .feature-card img {
@@ -215,10 +224,17 @@ header {
   margin-bottom: 1rem;
 }
 
-
 .feature-card h3 {
-  margin-bottom: 10px;
+  font-size: 1.3rem;
+  margin-bottom: 0.5rem;
 }
+
+.feature-card p {
+  font-size: 1.05rem;
+  line-height: 1.6rem;
+}
+
+
 
 .info-section {
   background-color: #dcedc8;
