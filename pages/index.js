@@ -44,6 +44,7 @@ export default function Home() {
 
         <div className="hero-image">
           <img src="/ration.png" alt="Ration Distribution" />
+
         </div>
       </section>
 
