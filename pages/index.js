@@ -43,7 +43,7 @@ export default function Home() {
         </div>
 
         <div className="hero-image">
-          <img src="/ration.png" alt="Ration Distribution" />
+          <img src="/ration.png.jpg" alt="Ration Distribution" />
 
         </div>
       </section>
