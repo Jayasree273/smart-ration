@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Geist, Geist_Mono } from "next/font/google";
 import BatchTrackerComponent from '../components/BatchTrackerComponent';
-import DeliveryMonitorComponent from '../components/DeliveryMonitorComponent';
+import DeliveryMonitorComponent from '../components/DeliveryMonitorComponent' ;
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
