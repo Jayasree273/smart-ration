@@ -1,40 +1,47 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+Smart Ration Portal A user-friendly web portal for transparent and efficient ration distribution Built with Next.js → deployed on Vercel.
 
-## Getting Started
+Features
 
-First, run the development server:
+Landing Page with Hero Section + Features
+Admin Dashboard → Manage Batches
+PDS Distributor Panel → Mark Deliveries
+Citizen Portal → Check PDS Status
+Login + Sign Up Pages with Role Selection
+Batch Tracker Component (uses useState + useEffect)
+Delivery Monitor Component (uses useState + useEffect)
+Fully responsive & user-friendly UI
+Deployed on Vercel
+Tech Stack Frontend: React + Next.js
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Styling: CSS + inline styles
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Deployment: Vercel
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
+Version Control: Git + GitHub
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
+Key Components 1)BatchTrackerComponent ->Uses useState to manage:
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
+List of batches
 
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+New batch input
 
-## Learn More
+Batch count
 
-To learn more about Next.js, take a look at the following resources:
+->Uses useEffect:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
+Initialize batches
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Log batch count changes
 
-## Deploy on Vercel
+DeliveryMonitorComponent ->Uses useState to manage:
+Current delivery status
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Last updated time
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
+-> Uses useEffect:
+
+Auto-refresh delivery status every 5 seconds
+
+Log delivery status updates
+
+JAYASREE R 2303717620522022
