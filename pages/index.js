@@ -88,7 +88,7 @@ export default function Home() {
           maxWidth: '400px',
           textAlign: 'center'
         }}>
-          <img src="/ration.png" alt="Ration Distribution" style={{
+          <img src="/ration.jpg" alt="Ration Distribution" style={{
             width: '100%',
             height: 'auto',
             maxHeight: '300px',
