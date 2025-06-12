@@ -6,9 +6,9 @@ export default async function handler(req, res) {
 
     try {
       const response = await axios.post(
-        'https://api.deepai.org/api/text-generator',
-        { text: message },
-        { headers: { 'Api-Key': process.env.NEXT_PUBLIC_DEEPAI_API_KEY } }
+        'https://api.deepai.org/api/text-generator',  // ✅ DeepAI Chat API URL
+        { text: message },  // ✅ Passing user's question to DeepAI
+        { headers: { 'Api-Key': process.env.NEXT_PUBLIC_DEEPAI_API_KEY } }  // ✅ API key comes from environment variable
       );
 
       res.status(200).json({ reply: response.data.output });
@@ -20,3 +20,4 @@ export default async function handler(req, res) {
     res.status(405).json({ error: 'Method not allowed' });
   }
 }
+
