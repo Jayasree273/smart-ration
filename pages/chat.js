@@ -30,17 +30,42 @@ export default function ChatPage() {
           value={message}
           onChange={(e) => setMessage(e.target.value)}
           required
-          style={{ padding: '0.8rem', fontSize: '1rem', borderRadius: '5px', border: '1px solid #ccc', marginRight: '1rem' }}
+          style={{
+            padding: '0.8rem',
+            fontSize: '1rem',
+            borderRadius: '5px',
+            border: '1px solid #ccc',
+            marginRight: '1rem'
+          }}
         />
-        <button type="submit" style={{ padding: '0.8rem 1.5rem', backgroundColor: '#4CAF50', color: 'white', border: 'none', borderRadius: '5px' }}>
+        <button
+          type="submit"
+          style={{
+            padding: '0.8rem 1.5rem',
+            backgroundColor: '#4CAF50',
+            color: 'white',
+            border: 'none',
+            borderRadius: '5px'
+          }}
+        >
           Ask
         </button>
       </form>
 
-      {error && <p style={{ color: 'red', marginTop: '1rem' }}>{error}</p>}
+      {error && (
+        <p style={{ color: 'red', marginTop: '1rem' }}>{error}</p>
+      )}
 
       {response && (
-        <div style={{ marginTop: '2rem', fontSize: '1.2rem', backgroundColor: '#f7f7f7', padding: '1rem', borderRadius: '5px' }}>
+        <div
+          style={{
+            marginTop: '2rem',
+            fontSize: '1.2rem',
+            backgroundColor: '#f7f7f7',
+            padding: '1rem',
+            borderRadius: '5px'
+          }}
+        >
           <h2>Chat Assistant:</h2>
           <p>{response}</p>
         </div>
