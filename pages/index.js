@@ -36,6 +36,10 @@ export default function Home() {
             color: 'white',
             textDecoration: 'none'
           }}>Sign Up</a>
+          <a href="/chat" className="highlighted" style={{ color: 'white', textDecoration: 'none', marginLeft: '1rem' }}>
+  Chat Assistant
+           </a>
+
         </div>
       </header>
 
