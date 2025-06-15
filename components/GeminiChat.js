@@ -24,10 +24,10 @@ export default function GeminiChat() {
       });
 
       const data = await res.json();
-      const aiReply = data?.reply || '🤖 Sorry, I couldn’t understand that.';
+      const aiReply = data.reply || '❌ No reply received.';
       setMessages((prev) => [...prev, { role: 'ai', text: aiReply }]);
     } catch {
-      setMessages((prev) => [...prev, { role: 'ai', text: '❌ Error connecting to Gemini API.' }]);
+      setMessages((prev) => [...prev, { role: 'ai', text: '❌ Error contacting Gemini API.' }]);
     } finally {
       setLoading(false);
     }
@@ -51,7 +51,6 @@ export default function GeminiChat() {
           alignItems: 'center',
           fontSize: '1.5rem',
           cursor: 'pointer',
-          boxShadow: '0 4px 12px rgba(0,0,0,0.3)',
           zIndex: 1000,
         }}
       >
@@ -74,7 +73,6 @@ export default function GeminiChat() {
             display: 'flex',
             flexDirection: 'column',
             overflow: 'hidden',
-            fontFamily: 'Segoe UI, sans-serif',
           }}
         >
           <div style={{ padding: '10px', backgroundColor: '#4f46e5', color: 'white', fontWeight: 'bold' }}>
@@ -83,13 +81,7 @@ export default function GeminiChat() {
 
           <div style={{ flex: 1, padding: '10px', overflowY: 'auto' }}>
             {messages.map((msg, idx) => (
-              <div
-                key={idx}
-                style={{
-                  marginBottom: '10px',
-                  textAlign: msg.role === 'user' ? 'right' : 'left',
-                }}
-              >
+              <div key={idx} style={{ marginBottom: '10px', textAlign: msg.role === 'user' ? 'right' : 'left' }}>
                 <span
                   style={{
                     display: 'inline-block',
@@ -103,18 +95,9 @@ export default function GeminiChat() {
                 </span>
               </div>
             ))}
-
             {loading && (
-              <div style={{ textAlign: 'left', marginBottom: '10px' }}>
-                <span style={{
-                  display: 'inline-block',
-                  padding: '8px 12px',
-                  backgroundColor: '#f3f4f6',
-                  borderRadius: '12px',
-                  fontStyle: 'italic'
-                }}>
-                  Gemini is typing...
-                </span>
+              <div style={{ fontStyle: 'italic', color: '#666', fontSize: '0.9rem' }}>
+                Gemini is typing...
               </div>
             )}
           </div>
@@ -151,4 +134,3 @@ export default function GeminiChat() {
     </>
   );
 }
-
