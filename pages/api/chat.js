@@ -1,41 +1,28 @@
-// For Next.js API route (pages/api/chat.js)
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method not allowed' });
+    return res.status(405).json({ error: 'Method Not Allowed' });
   }
 
   const { message } = req.body;
 
-  if (!message) {
-    return res.status(400).json({ error: 'Message is required' });
-  }
-
   try {
     const geminiRes = await fetch(
-      'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyBnNpbh5qoYkcKRuii8D3BebYKd_MeoX4E',
+      `https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${process.env.GEMINI_API_KEY}`,
       {
         method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          contents: [
-            {
-              role: 'user',
-              parts: [{ text: message }],
-            },
-          ],
+          contents: [{ role: 'user', parts: [{ text: message }] }],
         }),
       }
     );
 
     const data = await geminiRes.json();
+    const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text || 'No response';
 
-    const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text || 'No response received.';
-
-    res.status(200).json({ reply });
-  } catch (err) {
-    console.error('Error talking to Gemini:', err);
-    res.status(500).json({ error: 'Failed to get response from Gemini API' });
+    return res.status(200).json({ reply });
+  } catch (error) {
+    return res.status(500).json({ error: 'Failed to connect to Gemini API' });
   }
 }
+
