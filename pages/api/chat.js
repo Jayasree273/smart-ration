@@ -23,10 +23,18 @@ export default async function handler(req, res) {
     );
 
     const data = await geminiRes.json();
-    const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text || '🤖 Sorry, I couldn’t understand that.';
+
+    // Debug log (remove in production)
+    console.log('Gemini response:', JSON.stringify(data, null, 2));
+
+    const reply =
+      data?.candidates?.[0]?.content?.parts?.map((p) => p.text).join(' ') ||
+      data?.candidates?.[0]?.content?.text ||
+      '🤖 Sorry, I couldn’t understand that.';
 
     return res.status(200).json({ reply });
   } catch (error) {
+    console.error('Gemini API error:', error);
     return res.status(500).json({ error: 'Gemini API request failed' });
   }
 }
