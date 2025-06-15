@@ -1,6 +1,6 @@
 export default async function handler(req, res) {
   if (req.method !== 'POST') {
-    return res.status(405).json({ error: 'Method Not Allowed' });
+    return res.status(405).json({ error: 'Only POST requests allowed' });
   }
 
   const { message } = req.body;
@@ -12,17 +12,21 @@ export default async function handler(req, res) {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
-          contents: [{ role: 'user', parts: [{ text: message }] }],
+          contents: [
+            {
+              role: 'user',
+              parts: [{ text: message }],
+            },
+          ],
         }),
       }
     );
 
     const data = await geminiRes.json();
-    const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text || 'No response';
+    const reply = data?.candidates?.[0]?.content?.parts?.[0]?.text || '🤖 Sorry, I couldn’t understand that.';
 
     return res.status(200).json({ reply });
   } catch (error) {
-    return res.status(500).json({ error: 'Failed to connect to Gemini API' });
+    return res.status(500).json({ error: 'Gemini API request failed' });
   }
 }
-
