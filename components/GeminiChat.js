@@ -17,14 +17,14 @@ export default function GeminiChat() {
     setLoading(true);
 
     try {
-      const res = await fetch('/api/gemini', {
+      const res = await fetch('/api/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ input }),
+        body: JSON.stringify({ message: input }),
       });
 
       const data = await res.json();
-      const aiReply = data?.candidates?.[0]?.content?.parts?.[0]?.text || 'Sorry, I could not respond.';
+      const aiReply = data?.reply || '🤖 Sorry, I couldn’t understand that.';
       setMessages((prev) => [...prev, { role: 'ai', text: aiReply }]);
     } catch {
       setMessages((prev) => [...prev, { role: 'ai', text: '❌ Error connecting to Gemini API.' }]);
@@ -151,3 +151,4 @@ export default function GeminiChat() {
     </>
   );
 }
+
