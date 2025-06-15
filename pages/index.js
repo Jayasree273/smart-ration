@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { Geist, Geist_Mono } from "next/font/google";
 import BatchTrackerComponent from '../components/BatchTrackerComponent';
-import DeliveryMonitorComponent from '../components/DeliveryMonitorComponent' ;
+import DeliveryMonitorComponent from '../components/DeliveryMonitorComponent';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -36,10 +36,13 @@ export default function Home() {
             color: 'white',
             textDecoration: 'none'
           }}>Sign Up</a>
-          <a href="/chat" className="highlighted" style={{ color: 'white', textDecoration: 'none', marginLeft: '1rem' }}>
-  Chat Assistant
-           </a>
-
+          <a href="/chat" className="highlighted" style={{
+            color: 'white',
+            textDecoration: 'none',
+            marginLeft: '1rem'
+          }}>
+            Chat Assistant
+          </a>
         </div>
       </header>
 
@@ -167,13 +170,22 @@ export default function Home() {
         </div>
       </section>
 
-      
-      <div>
+      {/* 🚀 Add components below */}
+      <BatchTrackerComponent />
+      <DeliveryMonitorComponent />
+
+      <footer style={{
+        backgroundColor: '#154734',
+        color: 'white',
+        padding: '1rem',
+        textAlign: 'center',
+        marginTop: '2rem'
+      }}>
         <p>
           Smart Ration is a citizen-first portal ensuring food security and transparency in public
           distribution systems. Built with ❤️ for people, powered by technology.
         </p>
-     
+      </footer>
     </div>
   );
 }
