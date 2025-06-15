@@ -6,21 +6,30 @@ export default function ChatPage() {
   const [error, setError] = useState('');
   const chatBoxRef = useRef(null);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     if (!message.trim()) return;
 
     const userMessage = { sender: 'user', text: message };
-    const botMessage = {
-      sender: 'bot',
-      text: `✅ This is a sample reply to: "${message}"`,
-    };
-
-    setChatHistory((prev) => [...prev, userMessage, botMessage]);
+    setChatHistory((prev) => [...prev, userMessage]);
     setMessage('');
+
+    try {
+      const res = await fetch('/api/chat', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ message }),
+      });
+
+      const data = await res.json();
+      const botMessage = { sender: 'bot', text: data.reply };
+      setChatHistory((prev) => [...prev, botMessage]);
+    } catch (err) {
+      console.error(err);
+      setError('Something went wrong. Please try again.');
+    }
   };
 
-  // Auto-scroll to bottom when new message added
   useEffect(() => {
     if (chatBoxRef.current) {
       chatBoxRef.current.scrollTop = chatBoxRef.current.scrollHeight;
@@ -45,7 +54,6 @@ export default function ChatPage() {
         💬 Citizen Chat Assistant
       </h1>
 
-      {/* Chat Box */}
       <div
         ref={chatBoxRef}
         style={{
@@ -87,7 +95,6 @@ export default function ChatPage() {
         ))}
       </div>
 
-      {/* Input */}
       <form
         onSubmit={handleSubmit}
         style={{
