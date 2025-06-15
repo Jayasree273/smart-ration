@@ -170,22 +170,12 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 🚀 Add components below */}
-      <BatchTrackerComponent />
-      <DeliveryMonitorComponent />
-
-      <footer style={{
-        backgroundColor: '#154734',
-        color: 'white',
-        padding: '1rem',
-        textAlign: 'center',
-        marginTop: '2rem'
-      }}>
+     <div>
         <p>
           Smart Ration is a citizen-first portal ensuring food security and transparency in public
           distribution systems. Built with ❤️ for people, powered by technology.
         </p>
-      </footer>
+      
     </div>
   );
 }
