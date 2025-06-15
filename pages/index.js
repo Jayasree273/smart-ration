@@ -173,7 +173,7 @@ export default function Home() {
           Smart Ration is a citizen-first portal ensuring food security and transparency in public
           distribution systems. Built with ❤️ for people, powered by technology.
         </p>
-      </footer>
+     
     </div>
   );
 }
