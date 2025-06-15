@@ -71,39 +71,31 @@ export default function ChatPage() {
         }}
       >
         {chatHistory.map((msg, idx) => (
-          <div
-            key={idx}
-            style={{
-              display: 'flex',
-              justifyContent: msg.sender === 'user' ? 'flex-end' : 'flex-start',
-              marginBottom: '0.8rem',
-            }}
-          >
-            <div
-              style={{
-                backgroundColor: msg.sender === 'user' ? '#dcf8c6' : '#e2e8f0',
-                color: '#333',
-                padding: '0.8rem 1rem',
-                borderRadius: '16px',
-                maxWidth: '80%',
-                fontSize: '1rem',
-              }}
-            >
+          <div key={idx} style={{
+            display: 'flex',
+            justifyContent: msg.sender === 'user' ? 'flex-end' : 'flex-start',
+            marginBottom: '0.8rem',
+          }}>
+            <div style={{
+              backgroundColor: msg.sender === 'user' ? '#dcf8c6' : '#e2e8f0',
+              color: '#333',
+              padding: '0.8rem 1rem',
+              borderRadius: '16px',
+              maxWidth: '80%',
+              fontSize: '1rem',
+            }}>
               {msg.text}
             </div>
           </div>
         ))}
       </div>
 
-      <form
-        onSubmit={handleSubmit}
-        style={{
-          width: '100%',
-          maxWidth: '600px',
-          display: 'flex',
-          gap: '0.5rem'
-        }}
-      >
+      <form onSubmit={handleSubmit} style={{
+        width: '100%',
+        maxWidth: '600px',
+        display: 'flex',
+        gap: '0.5rem'
+      }}>
         <input
           type="text"
           placeholder="Type your message..."
@@ -119,18 +111,15 @@ export default function ChatPage() {
             outline: 'none'
           }}
         />
-        <button
-          type="submit"
-          style={{
-            backgroundColor: '#2c7a7b',
-            color: 'white',
-            border: 'none',
-            padding: '0.9rem 1.3rem',
-            borderRadius: '8px',
-            fontSize: '1rem',
-            cursor: 'pointer'
-          }}
-        >
+        <button type="submit" style={{
+          backgroundColor: '#2c7a7b',
+          color: 'white',
+          border: 'none',
+          padding: '0.9rem 1.3rem',
+          borderRadius: '8px',
+          fontSize: '1rem',
+          cursor: 'pointer'
+        }}>
           ➤
         </button>
       </form>
