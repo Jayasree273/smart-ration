@@ -168,13 +168,7 @@ export default function Home() {
       </section>
 
       
-      <footer style={{
-        backgroundColor: '#154734',
-        color: 'white',
-        padding: '1rem',
-        textAlign: 'center',
-        marginTop: '2rem'
-      }}>
+     <footer>
         <p>
           Smart Ration is a citizen-first portal ensuring food security and transparency in public
           distribution systems. Built with ❤️ for people, powered by technology.
