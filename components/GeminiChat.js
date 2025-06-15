@@ -4,6 +4,7 @@ export default function GeminiChat() {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([]);
   const [input, setInput] = useState('');
+  const [loading, setLoading] = useState(false);
 
   const toggleChat = () => setIsOpen(!isOpen);
 
@@ -13,31 +14,22 @@ export default function GeminiChat() {
     const userMessage = { role: 'user', text: input };
     setMessages((prev) => [...prev, userMessage]);
     setInput('');
+    setLoading(true);
 
     try {
-      const res = await fetch(
-        'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyBnNpbh5qoYkcKRuii8D3BebYKd_MeoX4E',
-        {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({
-            contents: [
-              {
-                role: 'user',
-                parts: [{ text: input }],
-              },
-            ],
-          }),
-        }
-      );
+      const res = await fetch('/api/gemini', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ input }),
+      });
 
       const data = await res.json();
       const aiReply = data?.candidates?.[0]?.content?.parts?.[0]?.text || 'Sorry, I could not respond.';
       setMessages((prev) => [...prev, { role: 'ai', text: aiReply }]);
     } catch {
-      setMessages((prev) => [...prev, { role: 'ai', text: 'Error: Unable to connect to Gemini API.' }]);
+      setMessages((prev) => [...prev, { role: 'ai', text: '❌ Error connecting to Gemini API.' }]);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -111,6 +103,20 @@ export default function GeminiChat() {
                 </span>
               </div>
             ))}
+
+            {loading && (
+              <div style={{ textAlign: 'left', marginBottom: '10px' }}>
+                <span style={{
+                  display: 'inline-block',
+                  padding: '8px 12px',
+                  backgroundColor: '#f3f4f6',
+                  borderRadius: '12px',
+                  fontStyle: 'italic'
+                }}>
+                  Gemini is typing...
+                </span>
+              </div>
+            )}
           </div>
 
           <div style={{ display: 'flex', borderTop: '1px solid #ccc' }}>
