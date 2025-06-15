@@ -1,28 +1,19 @@
 import { useState } from 'react';
-import axios from 'axios';
 
 export default function ChatPage() {
   const [message, setMessage] = useState('');
   const [chatHistory, setChatHistory] = useState([]);
   const [error, setError] = useState('');
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     if (!message.trim()) return;
 
     const userMessage = { sender: 'user', text: message };
-    setChatHistory((prev) => [...prev, userMessage]);
-    setMessage('');
-    setError('');
+    const botMessage = { sender: 'bot', text: `This is a sample reply to "${message}"` };
 
-    try {
-      const res = await axios.post('/api/chat', { message });
-      const botMessage = { sender: 'bot', text: res.data.reply };
-      setChatHistory((prev) => [...prev, botMessage]);
-    } catch (err) {
-      console.error(err);
-      setError('Something went wrong. Please try again.');
-    }
+    setChatHistory((prev) => [...prev, userMessage, botMessage]);
+    setMessage('');
   };
 
   return (
@@ -51,23 +42,18 @@ export default function ChatPage() {
         marginBottom: '1rem'
       }}>
         {chatHistory.map((msg, index) => (
-          <div
-            key={index}
-            style={{
-              textAlign: msg.sender === 'user' ? 'right' : 'left',
-              marginBottom: '0.8rem'
-            }}
-          >
-            <span
-              style={{
-                display: 'inline-block',
-                backgroundColor: msg.sender === 'user' ? '#DCF8C6' : '#EDEDED',
-                padding: '0.8rem 1rem',
-                borderRadius: '16px',
-                maxWidth: '80%',
-                fontSize: '1rem'
-              }}
-            >
+          <div key={index} style={{
+            textAlign: msg.sender === 'user' ? 'right' : 'left',
+            marginBottom: '0.8rem'
+          }}>
+            <span style={{
+              display: 'inline-block',
+              backgroundColor: msg.sender === 'user' ? '#DCF8C6' : '#EDEDED',
+              padding: '0.8rem 1rem',
+              borderRadius: '16px',
+              maxWidth: '80%',
+              fontSize: '1rem'
+            }}>
               {msg.text}
             </span>
           </div>
