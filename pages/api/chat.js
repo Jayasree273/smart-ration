@@ -24,13 +24,9 @@ export default async function handler(req, res) {
 
     const data = await geminiRes.json();
 
-    // Debug log (remove in production)
-    console.log('Gemini response:', JSON.stringify(data, null, 2));
-
     const reply =
-      data?.candidates?.[0]?.content?.parts?.map((p) => p.text).join(' ') ||
-      data?.candidates?.[0]?.content?.text ||
-      '🤖 Sorry, I couldn’t understand that.';
+      data?.candidates?.[0]?.content?.parts?.[0]?.text ||
+      '🤖 Gemini replied with empty content.';
 
     return res.status(200).json({ reply });
   } catch (error) {
