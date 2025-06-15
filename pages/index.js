@@ -167,10 +167,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 🚀 Add components below */}
-      <BatchTrackerComponent />
-      <DeliveryMonitorComponent />
-
+      
       <footer style={{
         backgroundColor: '#154734',
         color: 'white',
