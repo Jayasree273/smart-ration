@@ -1,47 +1,141 @@
-Smart Ration Portal A user-friendly web portal for transparent and efficient ration distribution Built with Next.js → deployed on Vercel.
+# Smart Ration Portal
 
-Features
+A full-stack web application designed to improve transparency and accessibility in the Public Distribution System (PDS). The portal provides role-based access for Administrators, PDS Shopkeepers, and Citizens, enabling secure authentication, batch management, delivery tracking, and AI-powered assistance.
 
-Landing Page with Hero Section + Features
-Admin Dashboard → Manage Batches
-PDS Distributor Panel → Mark Deliveries
-Citizen Portal → Check PDS Status
-Login + Sign Up Pages with Role Selection
-Batch Tracker Component (uses useState + useEffect)
-Delivery Monitor Component (uses useState + useEffect)
-Fully responsive & user-friendly UI
-Deployed on Vercel
-Tech Stack Frontend: React + Next.js
+## Features
 
-Styling: CSS + inline styles
+* Role-based authentication using Firebase Authentication
+* Separate dashboards for Admin, Shopkeeper, and Citizen
+* FIFO-based inventory and batch management
+* Batch creation and tracking
+* Delivery monitoring interface
+* Gemini-powered AI chatbot for user assistance
+* REST API integration using Next.js API Routes
+* Responsive user interface built with Next.js
+* Cloud deployment on Vercel with GitHub-based CI/CD
+* Deployment analytics using Vercel Analytics
 
-Deployment: Vercel
+## Tech Stack
 
-Version Control: Git + GitHub
+### Frontend
 
-Key Components 1)BatchTrackerComponent ->Uses useState to manage:
+* Next.js
+* React.js
+* HTML5
+* CSS3
+* JavaScript (ES6+)
 
-List of batches
+### Backend
 
-New batch input
+* Next.js API Routes
+* REST APIs
 
-Batch count
+### Authentication & Database
 
-->Uses useEffect:
+* Firebase Authentication
+* Cloud Firestore
 
-Initialize batches
+### AI Integration
 
-Log batch count changes
+* Google Gemini API
 
-DeliveryMonitorComponent ->Uses useState to manage:
-Current delivery status
+### Deployment
 
-Last updated time
+* Vercel
+* GitHub
 
--> Uses useEffect:
+## System Architecture
 
-Auto-refresh delivery status every 5 seconds
+```mermaid
+graph TD
+    %% Nodes
+    UI[Client UI<br/>Next.js + React.js]
+    API[Next.js API Routes<br/>/api/chat]
+    Auth[Firebase Auth]
+    Gemini[Google Gemini API]
+    DB[Cloud Firestore]
 
-Log delivery status updates
+    %% Connections
+    UI -- "HTTP (REST API)" --> API
+    API --> Auth
+    API --> Gemini
+    Auth --> DB
 
+    %% Styling
+    style UI fill:#f9f9f9,stroke:#333,stroke-width:2px,color:#000000
+    style API fill:#e1f5fe,stroke:#0277bd,stroke-width:2px,color:#000000
+    style Auth fill:#fff3e0,stroke:#ef6c00,color:#000000
+    style Gemini fill:#f3e5f5,stroke:#7b1fa2,color:#000000
+    style DB fill:#e8f5e9,stroke:#2e7d32,color:#000000
+```
 
+## Project Modules
+
+### Module 1 – Landing Page & GitHub Deployment
+
+* Designed a responsive landing page using HTML and CSS.
+* Deployed the project using GitHub Pages.
+
+### Module 2 – Next.js Setup
+
+* Migrated the project to Next.js.
+* Implemented routing and reusable page structure.
+
+### Module 3 – Reusable Components
+
+* Developed Batch Tracker component.
+* Developed Delivery Monitor component.
+* Managed component state using React Hooks.
+
+### Module 4 – AI Chatbot Integration
+
+* Built a Gemini-powered chatbot.
+* Created REST API endpoints using Next.js API Routes.
+* Integrated frontend with backend using HTTP POST requests.
+
+### Module 5 – Authentication & Cloud Services
+
+* Implemented Firebase Authentication.
+* Stored user role information in Cloud Firestore.
+* Integrated Vercel Analytics.
+* Deployed the application on Vercel.
+
+## Project Highlights
+
+* Secure role-based authentication
+* FIFO-based inventory and batch management
+* RESTful API integration
+* AI-powered chatbot
+* Cloud-hosted backend services
+* Responsive web application
+* GitHub-based CI/CD
+* Production deployment on Vercel
+
+## Future Enhancements
+
+* GPS-based ration vehicle tracking
+* Inventory demand forecasting using AI
+* OTP/Biometric verification for ration collection
+* Advanced analytics dashboard
+* Notification system for citizens
+* Digital ration card integration
+
+## Skills Demonstrated
+
+* Full Stack Web Development
+* React.js
+* Next.js
+* REST API Development
+* Firebase Authentication
+* Cloud Firestore
+* State Management
+* Git & GitHub
+* CI/CD
+* Cloud Deployment
+* Vercel
+* API Integration
+* Responsive Web Design
+
+## Resume Summary
+
+**Developed a role-based Smart Ration Portal with secure authentication, FIFO-based inventory and batch management, delivery tracking, Gemini-powered chatbot support, RESTful API integration, and deployment on Vercel with GitHub-based CI/CD.**
