@@ -53,7 +53,6 @@ graph TD
     API[Next.js API Routes<br/>/api/chat]
     Auth[Firebase Auth]
     Gemini[Google Gemini API]
-    DB[Cloud Firestore]
 
     %% Connections
     UI -- "HTTP (REST API)" --> API
@@ -66,7 +65,6 @@ graph TD
     style API fill:#e1f5fe,stroke:#0277bd,stroke-width:2px,color:#000000
     style Auth fill:#fff3e0,stroke:#ef6c00,color:#000000
     style Gemini fill:#f3e5f5,stroke:#7b1fa2,color:#000000
-    style DB fill:#e8f5e9,stroke:#2e7d32,color:#000000
 ```
 
 ## Project Modules
