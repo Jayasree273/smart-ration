@@ -58,7 +58,7 @@ graph TD
     UI -- "HTTP (REST API)" --> API
     API --> Auth
     API --> Gemini
-    Auth --> DB
+    Auth
 
     %% Styling
     style UI fill:#f9f9f9,stroke:#333,stroke-width:2px,color:#000000
